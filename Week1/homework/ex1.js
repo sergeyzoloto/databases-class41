@@ -74,6 +74,7 @@ INSERT INTO Meeting (meeting_title, starting_time, ending_time, room_no) VALUES
 `,
 ];
 
+// Function to log query results
 const executeQuery = (query, console_flag = false) => {
   db.query(query, (error, result) => {
     if (error) {
@@ -103,5 +104,8 @@ ${query}
   });
 };
 
+// Execute queries
 queries.forEach((query) => executeQuery(query));
+
+// Close connection
 db.end();

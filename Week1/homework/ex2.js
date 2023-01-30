@@ -9,6 +9,7 @@ const db = mysql.createConnection({
 });
 db.connect();
 
+// Create list with objects containing questions and queries
 const queries = [
   {
     question:
@@ -55,6 +56,7 @@ const queries = [
   },
 ];
 
+// Function to log query results
 const executeQuery = (query, console_flag = false) => {
   db.query(query.statement, (error, result) => {
     if (error) {
@@ -103,4 +105,6 @@ console.clear();
 queries.forEach((query) => {
   executeQuery(query, false);
 });
+
+// Close connection
 db.end();
