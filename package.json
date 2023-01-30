@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "mysql": "^2.18.1"
+  },
+  "name": "databases-class41",
+  "type": "module",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ex1": "node Week1/homework/ex1.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergeyzoloto/databases-class41.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergeyzoloto/databases-class41/issues"
+  },
+  "homepage": "https://github.com/sergeyzoloto/databases-class41#readme"
+}
