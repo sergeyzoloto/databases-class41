@@ -99,6 +99,7 @@ ${query}
           : ``
       }executed. ${result.affectedRows} rows affected
 `;
+      // Log the query status message
       console.log(MESSAGE);
     }
   });

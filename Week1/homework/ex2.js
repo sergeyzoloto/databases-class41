@@ -87,7 +87,7 @@ ${query.statement}
 `;
       // Log the question
       console.log(query.question);
-      // Log the message from the database
+      // Log the query status message
       console.log(MESSAGE);
       // Log the query results
       console.table(result);
