@@ -96,7 +96,7 @@ ${error.sqlMessage}
 ${query}
 `
           : ``
-      }executed. Affected rows: ${result.affectedRows}
+      }executed. ${result.affectedRows} rows affected
 `;
       console.log(MESSAGE);
     }
