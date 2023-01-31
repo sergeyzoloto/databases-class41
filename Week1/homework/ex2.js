@@ -2,13 +2,13 @@ import mysql from 'mysql';
 import executeQuery from '../../query_functions.js';
 
 // Establish connection to the database
-const db = mysql.createConnection({
+const connection = mysql.createConnection({
   host: 'localhost',
   user: 'hyfuser',
   password: 'hyfpassword',
   database: 'world',
 });
-db.connect();
+connection.connect();
 
 // Create list with objects containing questions and queries
 const queries = [
@@ -62,7 +62,7 @@ process.stdout.write('\u001b[3J\u001b[2J\u001b[1J');
 console.clear();
 
 // Execute queries
-queries.forEach((query) => executeQuery(query.statement, db));
+queries.forEach((query) => executeQuery(query.statement, connection));
 
 // Close connection
-db.end();
+connection.end();

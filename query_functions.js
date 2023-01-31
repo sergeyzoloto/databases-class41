@@ -36,7 +36,10 @@ const logQueryResult = (result, query, full_query) => {
     // Log the query status message
     console.log(message);
     // Log the query results
-    if (result.affectedRows == null) console.table(result);
+    if (result.affectedRows == null) {
+      console.table(result);
+      console.log(`\n`);
+    }
   }
   if (full_query) console.log(`\n`);
 };

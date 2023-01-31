@@ -2,12 +2,12 @@ import mysql from 'mysql';
 import executeQuery from '../../query_functions.js';
 
 // Establish connection to the database
-const db = mysql.createConnection({
+const connection = mysql.createConnection({
   host: 'localhost',
   user: 'hyfuser',
   password: 'hyfpassword',
 });
-db.connect();
+connection.connect();
 const DB_NAME = 'meetup';
 
 // Create a list of queries
@@ -76,7 +76,7 @@ INSERT INTO Meeting (meeting_title, starting_time, ending_time, room_no) VALUES
 ];
 
 // Execute queries
-queries.forEach((query) => executeQuery(query, db));
+queries.forEach((query) => executeQuery(query, connection));
 
 // Close connection
-db.end();
+connection.end();
