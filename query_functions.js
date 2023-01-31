@@ -19,7 +19,7 @@ const logErrorMessage = (error, query, full_query) => {
   message += `${error.sqlMessage}`;
   // Log the error message
   console.log(`${message}`);
-  if (full_query) console.log(`\n\n`);
+  if (full_query) console.log(`\n`);
 };
 
 // Function rendering query result
@@ -38,10 +38,9 @@ const logQueryResult = (result, query, full_query) => {
     // Log the query results
     if (result.affectedRows == null) {
       console.table(result);
-      console.log(`\n`);
     }
   }
-  if (full_query) console.log(`\n`);
+  if (full_query || result.affectedRows == null) console.log(`\n`);
 };
 
 const indentString = (string, count, indent = ' ') =>
