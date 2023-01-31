@@ -1,4 +1,5 @@
 import mysql from 'mysql';
+import executeQuery from '../../query_functions.js';
 
 // Establish connection to the database
 const db = mysql.createConnection({
@@ -74,39 +75,8 @@ INSERT INTO Meeting (meeting_title, starting_time, ending_time, room_no) VALUES
 `,
 ];
 
-// Function to log query results
-const executeQuery = (query, console_flag = false) => {
-  db.query(query, (error, result) => {
-    if (error) {
-      // Formate error message conditionally
-      console.log(`ERROR. Query ${
-        console_flag
-          ? `
-${query}
-`
-          : ``
-      }execution failed, returned message:
-
-${error.sqlMessage}
-`);
-    } else {
-      // Formate message conditionally
-      const MESSAGE = `Query ${
-        console_flag
-          ? `
-${query}
-`
-          : ``
-      }executed. ${result.affectedRows} rows affected
-`;
-      // Log the query status message
-      console.log(MESSAGE);
-    }
-  });
-};
-
 // Execute queries
-queries.forEach((query) => executeQuery(query));
+queries.forEach((query) => executeQuery(query, db));
 
 // Close connection
 db.end();

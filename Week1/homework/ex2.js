@@ -1,4 +1,5 @@
 import mysql from 'mysql';
+import executeQuery from '../../query_functions.js';
 
 // Establish connection to the database
 const db = mysql.createConnection({
@@ -56,55 +57,12 @@ const queries = [
   },
 ];
 
-// Function to log query results
-const executeQuery = (query, console_flag = false) => {
-  db.query(query.statement, (error, result) => {
-    if (error) {
-      // Formate error message conditionally
-      console.log(`ERROR. Query ${
-        console_flag
-          ? `
-
-${query.statement}
-
-`
-          : ``
-      }execution failed, returned message:
-
-${error.sqlMessage}
-`);
-    } else {
-      // Formate message conditionally
-      const MESSAGE = `Query ${
-        console_flag
-          ? `
-
-${query.statement}
-
-`
-          : ``
-      }executed. Results:
-`;
-      // Log the question
-      console.log(query.question);
-      // Log the query status message
-      console.log(MESSAGE);
-      // Log the query results
-      console.table(result);
-      // Add an empty line
-      console.log(``);
-    }
-  });
-};
-
 // Clear console / terminal
 process.stdout.write('\u001b[3J\u001b[2J\u001b[1J');
 console.clear();
 
 // Execute queries
-queries.forEach((query) => {
-  executeQuery(query, false);
-});
+queries.forEach((query) => executeQuery(query.statement, db));
 
 // Close connection
 db.end();
