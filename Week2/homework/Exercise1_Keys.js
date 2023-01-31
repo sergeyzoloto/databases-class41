@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS authors (
 );
 `,
   `
-INSERT INTO author (author_name) VALUES
+INSERT INTO authors (author_name) VALUES
   ('Priscilla Sherm')
 ;
 `,
