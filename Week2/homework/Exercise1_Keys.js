@@ -5,6 +5,7 @@
 */
 
 import mysql from 'mysql';
+import executeQuery from '../../query_functions.js';
 
 // Establish connection to the database
 const db = mysql.createConnection({
@@ -42,51 +43,8 @@ SELECT * FROM authors
 `,
 ];
 
-// Function to log query results
-const executeQuery = (query, console_flag = false) => {
-  db.query(query, (error, result) => {
-    if (error) {
-      // Formate error message conditionally
-      consoleErrorMessage(error, query, console_flag);
-    } else {
-      // Formate message conditionally
-      consoleQueryResult(result, query, console_flag);
-    }
-  });
-};
-
-// Function rendering error message
-const consoleErrorMessage = (error, query, console_flag) => {
-  let message = `ERROR. Query`;
-  if (console_flag) message = message + indentString(`\n${query}`, 2) + `\n`;
-  message += `execution failed, returned message: `;
-  message += `${error.sqlMessage}`;
-  // Log the error message
-  console.error(`${message}\n\n`);
-};
-
-// Function rendering query result
-const consoleQueryResult = (result, query, console_flag) => {
-  let message = `Query`;
-  if (console_flag) message = message + indentString(`\n${query}`, 2) + `\n`;
-  message += `executed.`;
-  if (typeof result.affectedRows === 'number') {
-    message += ` ${result.affectedRows} rows affected`;
-  } else {
-    message += ` Results:`;
-  }
-  // Log the query status message
-  console.log(message);
-  // Log the query results
-  if (result.affectedRows == null) console.table(result);
-  console.log(`\n`);
-};
-
-const indentString = (string, count, indent = ' ') =>
-  string.replace(/^/gm, indent.repeat(count));
-
 // Execute queries
-queries.forEach((query) => executeQuery(query, true));
+queries.forEach((query) => executeQuery(query, db, true));
 
 // Close connection
 db.end();
