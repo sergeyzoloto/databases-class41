@@ -6,7 +6,7 @@
     "date_of_birth": "1970-10-22",
     "h_index": null,
     "gender": "whatever",
-    "mentor": null
+    "mentor": 0
   },
   {
     "author_id": 1,
@@ -15,7 +15,7 @@
     "date_of_birth": "1963-06-03",
     "h_index": null,
     "gender": "neuter",
-    "mentor": null
+    "mentor": 0
   },
   {
     "author_id": 2,
@@ -24,7 +24,7 @@
     "date_of_birth": "1959-01-30",
     "h_index": null,
     "gender": "masculine",
-    "mentor": null
+    "mentor": 1
   },
   {
     "author_id": 3,
@@ -33,7 +33,7 @@
     "date_of_birth": "1983-12-06",
     "h_index": null,
     "gender": "common",
-    "mentor": null
+    "mentor": 1
   },
   {
     "author_id": 4,
@@ -42,7 +42,7 @@
     "date_of_birth": "1976-03-17",
     "h_index": null,
     "gender": "female",
-    "mentor": null
+    "mentor": 2
   },
   {
     "author_id": 5,
@@ -51,7 +51,7 @@
     "date_of_birth": "1963-04-22",
     "h_index": null,
     "gender": "whocares",
-    "mentor": null
+    "mentor": 2
   },
   {
     "author_id": 6,
@@ -69,7 +69,7 @@
     "date_of_birth": "1986-08-11",
     "h_index": null,
     "gender": "whoknows",
-    "mentor": null
+    "mentor": 3
   },
   {
     "author_id": 8,
@@ -87,7 +87,7 @@
     "date_of_birth": "1971-07-28",
     "h_index": null,
     "gender": "sapience",
-    "mentor": null
+    "mentor": 7
   },
   {
     "author_id": 10,
@@ -96,7 +96,7 @@
     "date_of_birth": "1959-02-05",
     "h_index": null,
     "gender": "gender",
-    "mentor": 2
+    "mentor": 4
   },
   {
     "author_id": 11,
@@ -105,16 +105,16 @@
     "date_of_birth": "1965-10-01",
     "h_index": null,
     "gender": "onemore",
-    "mentor": null
+    "mentor": 9
   },
   {
     "author_id": 12,
     "author_name": "Eman Emanrus",
-    "university": "",
+    "university": "Monsters University",
     "date_of_birth": "1991-08-25",
     "h_index": null,
     "gender": "volatile",
-    "mentor": null
+    "mentor": 11
   },
   {
     "author_id": 13,
@@ -123,7 +123,7 @@
     "date_of_birth": "1975-02-22",
     "h_index": null,
     "gender": null,
-    "mentor": 3
+    "mentor": 1
   },
   {
     "author_id": 14,
@@ -132,7 +132,7 @@
     "date_of_birth": "1966-01-07",
     "h_index": null,
     "gender": "whatever",
-    "mentor": 2
+    "mentor": 3
   },
   {
     "author_id": 15,
@@ -141,6 +141,6 @@
     "date_of_birth": "1984-03-31",
     "h_index": null,
     "gender": "unknown",
-    "mentor": 1
+    "mentor": 6
   }
 ]

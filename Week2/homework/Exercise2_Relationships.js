@@ -91,8 +91,8 @@ async function insertAuthors() {
   await execInsert({ data: authors, table: 'authors' });
 }
 async function insertRelations() {
-  const relations = loadJSON('/relations.json');
-  await execInsert({ data: relations, table: 'authors_papers' });
+  const authors_papers = loadJSON('/authors_papers.json');
+  await execInsert({ data: authors_papers, table: 'authors_papers' });
 }
 
 const loadJSON = (fileName) => {
