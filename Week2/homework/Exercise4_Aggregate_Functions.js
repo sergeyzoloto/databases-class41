@@ -55,7 +55,7 @@ GROUP BY university;
 
 // Execute queries
 connection.changeUser({ database: 'authors' });
-queries.forEach((query) => execQuery({ query, connection, full_query: true }));
+queries.forEach((query) => execQuery({ query, connection, full_query: false }));
 
 // Close connection
 connection.end();

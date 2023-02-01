@@ -18,7 +18,7 @@ async function execInsert(params) {
         query: `INSERT INTO ${params.table} SET ?`,
         set: element,
         connection,
-        full_query: true,
+        full_query: false,
       }),
     );
     await Promise.all(promises);
@@ -32,7 +32,7 @@ async function execQueries(params) {
       execQuery({
         query: element,
         connection,
-        full_query: true,
+        full_query: false,
       }),
     );
     await Promise.all(promises);
