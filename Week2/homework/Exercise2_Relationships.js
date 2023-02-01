@@ -26,24 +26,31 @@ async function execInsert(params) {
     console.log(error);
   }
 }
+async function execQueries(params) {
+  try {
+    const promises = params.data.map((element) =>
+      execQuery({
+        query: element,
+        connection,
+        full_query: true,
+      }),
+    );
+    await Promise.all(promises);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-async function seedDatabase() {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-  const loadJSON = (fileName) =>
-    JSON.parse(fs.readFileSync(__dirname + fileName, 'utf8'));
-  const authors = loadJSON('/authors.json');
-  const papers = loadJSON('/papers.json');
-
+async function createTables() {
   const queries = [
     `
-DROP TABLE IF EXISTS research_Papers;
+DROP TABLE IF EXISTS authors_papers;
 `,
     `
-DROP TABLE IF EXISTS authors_Papers;
+DROP TABLE IF EXISTS research_papers;
 `,
     `
-CREATE TABLE IF NOT EXISTS research_Papers
+CREATE TABLE IF NOT EXISTS research_papers
 (
   paper_id INT PRIMARY KEY AUTO_INCREMENT,
   paper_title VARCHAR(255),
@@ -52,7 +59,7 @@ CREATE TABLE IF NOT EXISTS research_Papers
 );
 `,
     `
-CREATE TABLE IF NOT EXISTS authors_Papers
+CREATE TABLE IF NOT EXISTS authors_papers
 (
   author_id INT,
   paper_id INT,
@@ -64,23 +71,39 @@ CREATE TABLE IF NOT EXISTS authors_Papers
 );
 `,
     `
-DELETE FROM research_Papers;
+DELETE FROM research_papers;
 `,
     `
-DELETE FROM authors_Papers;
+DELETE FROM authors_papers;
 `,
     `
 DELETE FROM authors;
 `,
   ];
-  queries.forEach((query) =>
-    execQuery({ query, connection, full_query: true }),
-  );
+  await execQueries({ data: queries });
+}
+async function insertPapers() {
+  const papers = loadJSON('/papers.json');
+  await execInsert({ data: papers, table: 'research_papers' });
+}
+async function insertAuthors() {
+  const authors = loadJSON('/authors.json');
   await execInsert({ data: authors, table: 'authors' });
-  await execInsert({ data: papers, table: 'research_Papers' });
+}
+async function insertRelations() {
+  const relations = loadJSON('/relations.json');
+  await execInsert({ data: relations, table: 'authors_papers' });
 }
 
+const loadJSON = (fileName) => {
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  return JSON.parse(fs.readFileSync(__dirname + fileName, 'utf8'));
+};
+
 connection.changeUser({ database: 'authors' });
-//connection.connect();
-seedDatabase();
+createTables();
+insertAuthors();
+insertPapers();
+insertRelations();
 connection.end();
