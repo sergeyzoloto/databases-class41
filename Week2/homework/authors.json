@@ -1,0 +1,146 @@
+[
+  {
+    "author_id": 0,
+    "author_name": "Random Someone",
+    "university": "College Of Notre Dame Of Maryland",
+    "date_of_birth": "1970-10-22",
+    "h_index": null,
+    "gender": "whatever",
+    "mentor": null
+  },
+  {
+    "author_id": 1,
+    "author_name": "Professor X",
+    "university": "Super Hero University",
+    "date_of_birth": "1963-06-03",
+    "h_index": null,
+    "gender": "neuter",
+    "mentor": null
+  },
+  {
+    "author_id": 2,
+    "author_name": "John Gold",
+    "university": "Engineering Academy",
+    "date_of_birth": "1959-01-30",
+    "h_index": null,
+    "gender": "masculine",
+    "mentor": null
+  },
+  {
+    "author_id": 3,
+    "author_name": "Someone Else",
+    "university": "High Point",
+    "date_of_birth": "1983-12-06",
+    "h_index": null,
+    "gender": "common",
+    "mentor": null
+  },
+  {
+    "author_id": 4,
+    "author_name": "Priscilla Wednesday",
+    "university": "Slippery Rock",
+    "date_of_birth": "1976-03-17",
+    "h_index": null,
+    "gender": "female",
+    "mentor": null
+  },
+  {
+    "author_id": 5,
+    "author_name": "Bear Blaze",
+    "university": "Beaver College",
+    "date_of_birth": "1963-04-22",
+    "h_index": null,
+    "gender": "whocares",
+    "mentor": null
+  },
+  {
+    "author_id": 6,
+    "author_name": "Bronx Mowgli",
+    "university": "Harvard",
+    "date_of_birth": "1993-11-22",
+    "h_index": null,
+    "gender": "undefined",
+    "mentor": 5
+  },
+  {
+    "author_id": 7,
+    "author_name": "Harm Portabella",
+    "university": "Beijing normal university",
+    "date_of_birth": "1986-08-11",
+    "h_index": null,
+    "gender": "whoknows",
+    "mentor": null
+  },
+  {
+    "author_id": 8,
+    "author_name": "Moon Unit",
+    "university": "Miami University of Ohio",
+    "date_of_birth": "1973-12-07",
+    "h_index": null,
+    "gender": "fluid",
+    "mentor": 4
+  },
+  {
+    "author_id": 9,
+    "author_name": "X Æ A-12",
+    "university": "Supernova University",
+    "date_of_birth": "1971-07-28",
+    "h_index": null,
+    "gender": "sapience",
+    "mentor": null
+  },
+  {
+    "author_id": 10,
+    "author_name": "Prince Almond",
+    "university": "Prince-ton",
+    "date_of_birth": "1959-02-05",
+    "h_index": null,
+    "gender": "gender",
+    "mentor": 2
+  },
+  {
+    "author_id": 11,
+    "author_name": "Lucifer Cinnamon",
+    "university": "Daemon",
+    "date_of_birth": "1965-10-01",
+    "h_index": null,
+    "gender": "onemore",
+    "mentor": null
+  },
+  {
+    "author_id": 12,
+    "author_name": "Eman Emanrus",
+    "university": "",
+    "date_of_birth": "1991-08-25",
+    "h_index": null,
+    "gender": "volatile",
+    "mentor": null
+  },
+  {
+    "author_id": 13,
+    "author_name": "Dr Who",
+    "university": "Colgate",
+    "date_of_birth": "1975-02-22",
+    "h_index": null,
+    "gender": null,
+    "mentor": 3
+  },
+  {
+    "author_id": 14,
+    "author_name": "Ivan Minivan",
+    "university": "East-West University",
+    "date_of_birth": "1966-01-07",
+    "h_index": null,
+    "gender": "whatever",
+    "mentor": 2
+  },
+  {
+    "author_id": 15,
+    "author_name": "Fake Person",
+    "university": "Cambridge",
+    "date_of_birth": "1984-03-31",
+    "h_index": null,
+    "gender": "unknown",
+    "mentor": 1
+  }
+]

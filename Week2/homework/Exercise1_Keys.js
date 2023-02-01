@@ -3,17 +3,7 @@
 2. Write a query that adds a column called `mentor` to `authors` table that references the column `author_id`.
    For integrity add a `foreign key` on this column.
 */
-
-import mysql from 'mysql';
-import executeQuery from '../../query_functions.js';
-
-// Establish connection to the database
-const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'hyfuser',
-  password: 'hyfpassword',
-});
-db.connect();
+import { db as connection, execQuery } from './db.js';
 const DB_NAME = 'authors';
 
 // Create a list of queries
@@ -29,22 +19,26 @@ USE ${DB_NAME};
 `,
   `
 CREATE TABLE IF NOT EXISTS authors (
-  author_id INT PRIMARY KEY AUTO_INCREMENT,
-  author_name VARCHAR(100)
+  author_id INT PRIMARY KEY,
+  author_name VARCHAR(100),
+  university VARCHAR(100),
+  date_of_birth DATE,
+  h_index INT,
+  gender VARCHAR(20)
 );
 `,
   `
-INSERT INTO authors (author_name) VALUES
-  ('Priscilla Sherm')
+ALTER TABLE authors
+  ADD mentor INT NULL,
+  ADD CONSTRAINT FOREIGN KEY (mentor) REFERENCES authors(author_id)
+    ON DELETE CASCADE ON UPDATE CASCADE
 ;
-`,
-  `
-SELECT * FROM authors
 `,
 ];
 
 // Execute queries
-queries.forEach((query) => executeQuery(query, db, true));
+connection.connect();
+queries.forEach((query) => execQuery({ query, connection, full_query: true }));
 
 // Close connection
-db.end();
+connection.end();
