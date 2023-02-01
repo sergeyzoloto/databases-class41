@@ -52,7 +52,7 @@ DROP TABLE IF EXISTS research_papers;
     `
 CREATE TABLE IF NOT EXISTS research_papers
 (
-  paper_id INT PRIMARY KEY AUTO_INCREMENT,
+  paper_id INT PRIMARY KEY,
   paper_title VARCHAR(255),
   conference VARCHAR(255),
   publish_date DATE
