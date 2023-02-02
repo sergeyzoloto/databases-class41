@@ -3,7 +3,7 @@
 2. Write a query that adds a column called `mentor` to `authors` table that references the column `author_id`.
    For integrity add a `foreign key` on this column.
 */
-import { db as connection, execQuery } from './db.js';
+import { db as connection, execQuery } from '../../db.js';
 const DB_NAME = 'authors';
 
 // Create a list of queries

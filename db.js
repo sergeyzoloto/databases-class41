@@ -1,5 +1,5 @@
 import mysql from 'mysql';
-import { executeQuery } from '../../query_functions.js';
+import { executeQuery } from './query_functions.js';
 import util from 'util';
 
 // Establish connection to the database

@@ -8,7 +8,7 @@ Write some queries to retrieve the following rows:
 5. Minimum and maximum of the h-index of all authors per university.
 */
 
-import { db as connection, execQuery } from './db.js';
+import { db as connection, execQuery } from '../../db.js';
 
 const queries = [
   `

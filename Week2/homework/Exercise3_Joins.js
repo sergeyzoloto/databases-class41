@@ -4,7 +4,7 @@
    If there is an author without any `research_Papers`, print the information of that `author` too.
 */
 
-import { db as connection, execQuery } from './db.js';
+import { db as connection, execQuery } from '../../db.js';
 
 const queries = [
   `

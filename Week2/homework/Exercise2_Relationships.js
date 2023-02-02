@@ -6,7 +6,7 @@
    all queries in the exercises 3 and 4 will return some answers
 */
 
-import { db as connection, execQuery } from './db.js';
+import { db as connection, execQuery } from '../../db.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -83,15 +83,15 @@ DELETE FROM authors;
   await execQueries({ data: queries });
 }
 async function insertPapers() {
-  const papers = loadJSON('/papers.json');
+  const papers = loadJSON('/data/papers.json');
   await execInsert({ data: papers, table: 'research_papers' });
 }
 async function insertAuthors() {
-  const authors = loadJSON('/authors.json');
+  const authors = loadJSON('/data/authors.json');
   await execInsert({ data: authors, table: 'authors' });
 }
 async function insertRelations() {
-  const authors_papers = loadJSON('/authors_papers.json');
+  const authors_papers = loadJSON('/data/authors_papers.json');
   await execInsert({ data: authors_papers, table: 'authors_papers' });
 }
 

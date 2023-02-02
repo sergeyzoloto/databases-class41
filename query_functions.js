@@ -1,21 +1,20 @@
 // Function to log query results
 export function executeQuery(params) {
   if (!params.full_query) params.full_query = false;
-  const query = params.query;
   if (params.set) {
-    params.connection.query(query, params.set, callbackFunction);
+    params.connection.query(params.query, params.set, callbackFunction);
   } else {
-    params.connection.query(query, callbackFunction);
+    params.connection.query(params.query, callbackFunction);
   }
 
   // Callback Function
   function callbackFunction(error, result) {
     if (error) {
       // Formate error message conditionally
-      logErrorMessage(error, query, params.full_query, params.set);
+      logErrorMessage(error, params.query, params.full_query, params.set);
     } else {
       // Formate message conditionally
-      logQueryResult(result, query, params.full_query, params.set);
+      logQueryResult(result, params.query, params.full_query, params.set);
     }
   }
 }
@@ -33,7 +32,6 @@ const logErrorMessage = (error, query, full_query, set = null) => {
       `\n`;
   message += `execution failed, returned message: `;
   message += `${error.sqlMessage}`;
-  message.replace('SET ?', `SET ${set}`);
   // Log the error message
   console.log(`${message}`);
   if (full_query) console.log(`\n`);
