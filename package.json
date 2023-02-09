@@ -14,7 +14,10 @@
     "w02ex01": "node Week2/homework/Exercise1_Keys.js",
     "w02ex02": "node Week2/homework/Exercise2_Relationships.js",
     "w02ex03": "node Week2/homework/Exercise3_Joins.js",
-    "w02ex04": "node Week2/homework/Exercise4_Aggregate_Functions.js"
+    "w02ex04": "node Week2/homework/Exercise4_Aggregate_Functions.js",
+    "w03ex02": "node Week3/homework/Exercise2_Transactions/transactions-insert-values.js",
+    "w03ex03": "node Week3/homework/Exercise3_Joins.js",
+    "w03ex04": "node Week3/homework/Exercise4_Aggregate_Functions.js"
   },
   "repository": {
     "type": "git",
