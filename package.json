@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "dotenv": "^16.0.3",
     "itil": "^0.0.1",
+    "mongodb": "^5.0.1",
     "mysql": "^2.18.1"
   },
   "name": "databases-class41",

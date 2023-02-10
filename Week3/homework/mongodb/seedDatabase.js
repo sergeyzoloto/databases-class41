@@ -1,4 +1,12 @@
-const data = require("./data.json");
+async function loadJSON(fileName) {
+  const fs = await import('fs');
+  const path = await import('path');
+  const url = await import('url');
+  const __filename = url.fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const data = await JSON.parse(fs.readFileSync(__dirname + fileName, 'utf8'));
+  return data;
+}
 
 /**
  * This function will drop and recreate the collection of sample data in our csv file.
@@ -7,15 +15,17 @@ const data = require("./data.json");
  * @param {MongoClient} client - The client that is connected to your database
  */
 const seedDatabase = async (client) => {
+  const data = await loadJSON('/data.json');
+
   const hasCollection = await client
-    .db("databaseWeek3")
-    .listCollections({ name: "bob_ross_episodes" })
+    .db('databaseWeek3')
+    .listCollections({ name: 'bob_ross_episodes' })
     .hasNext();
 
   if (hasCollection) {
     const bobRossCollection = await client
-      .db("databaseWeek3")
-      .collection("bob_ross_episodes");
+      .db('databaseWeek3')
+      .collection('bob_ross_episodes');
 
     // Remove all the documents
     await bobRossCollection.deleteMany({});
@@ -25,16 +35,16 @@ const seedDatabase = async (client) => {
       const { EPISODE, TITLE } = dataItem;
 
       const depictionElementKeys = Object.keys(dataItem).filter(
-        (key) => !["EPISODE", "TITLE"].includes(key)
+        (key) => !['EPISODE', 'TITLE'].includes(key),
       );
       const depictionElements = depictionElementKeys.filter(
-        (key) => dataItem[key] === 1
+        (key) => dataItem[key] === 1,
       );
 
       return {
         episode: EPISODE,
         // Remove the extra quotation marks
-        title: TITLE.replaceAll('"', ""),
+        title: TITLE.replaceAll('"', ''),
         elements: depictionElements,
       };
     });
@@ -42,10 +52,8 @@ const seedDatabase = async (client) => {
     // Add our documents
     await bobRossCollection.insertMany(documents);
   } else {
-    throw Error("The collection `bob_ross_episodes` does not exist!");
+    throw Error('The collection `bob_ross_episodes` does not exist!');
   }
 };
 
-module.exports = {
-  seedDatabase,
-};
+export { seedDatabase };
