@@ -1,4 +1,6 @@
 import { db as connection, execBoundQuery } from '../../../db.js';
+import { insertValues } from './transactions-insert-values.js';
+import { createTables } from './transactions-create-tables.js';
 
 async function transfer(source_id, target_id, amount) {
   try {
@@ -30,7 +32,7 @@ async function transfer(source_id, target_id, amount) {
       // insert details into account_changes table
       await execBoundQuery(
         'INSERT INTO account_changes (account_number, amount, changed_date, remark) VALUES (?)',
-        [[source_id, amount, today, `${amount} sent to ID ${target_id}`]],
+        [[source_id, -amount, today, `${amount} sent to ID ${target_id}`]],
       );
       await execBoundQuery(
         'INSERT INTO account_changes (account_number, amount, changed_date, remark) VALUES (?)',
@@ -49,5 +51,7 @@ async function transfer(source_id, target_id, amount) {
 }
 
 connection.changeUser({ database: 'transactions' });
+createTables();
+insertValues();
 await transfer(101, 102, 1000);
 connection.end();
