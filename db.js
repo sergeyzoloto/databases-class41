@@ -3,16 +3,16 @@ import { executeQuery } from './query_functions.js';
 import util from 'util';
 
 // Establish connection to the database
-export const db = mysql.createConnection({
+const db = mysql.createConnection({
   host: 'localhost',
   user: 'hyfuser',
   password: 'hyfpassword',
 });
 
-export const execQuery = util.promisify(executeQuery);
-export const execBoundQuery = util.promisify(db.query.bind(db));
+const execQuery = util.promisify(executeQuery);
+const execBoundQuery = util.promisify(db.query.bind(db));
 
-export async function execAsyncQueries(params) {
+async function execAsyncQueries(params) {
   try {
     const promises = params.data.map((element) =>
       execQuery({
@@ -27,3 +27,5 @@ export async function execAsyncQueries(params) {
     console.log(error);
   }
 }
+
+export { db, execQuery, execBoundQuery, execAsyncQueries };
