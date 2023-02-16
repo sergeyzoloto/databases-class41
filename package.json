@@ -20,7 +20,8 @@
     "w03ex02": "node Week3/homework/Exercise2_Transactions/transactions.js",
     "w03ex03": "node Week3/homework/Exercise3_SQL_injection.js",
     "w03ex04": "node Week3/homework/mongodb/index.js",
-    "w04ex01": "node Week4/homework/ex1-aggregation/index.js"
+    "w04ex01": "node Week4/homework/ex1-aggregation/index.js",
+    "w04ex02": "node Week4/homework/ex2-transactions/index.js"
   },
   "repository": {
     "type": "git",
