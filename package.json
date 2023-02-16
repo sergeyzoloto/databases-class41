@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "itil": "^0.0.1",
+    "mongodb": "^5.0.1",
+    "mysql": "^2.18.1"
+  },
+  "name": "databases-class41",
+  "type": "module",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "w01ex01": "node Week1/homework/ex1.js",
+    "w01ex02": "node Week1/homework/ex2.js",
+    "w02ex01": "node Week2/homework/Exercise1_Keys.js",
+    "w02ex02": "node Week2/homework/Exercise2_Relationships.js",
+    "w02ex03": "node Week2/homework/Exercise3_Joins.js",
+    "w02ex04": "node Week2/homework/Exercise4_Aggregate_Functions.js",
+    "w03ex02": "node Week3/homework/Exercise2_Transactions/transactions.js",
+    "w03ex03": "node Week3/homework/Exercise3_SQL_injection.js",
+    "w03ex04": "node Week3/homework/mongodb/index.js",
+    "w04ex01": "node Week4/homework/ex1-aggregation/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergeyzoloto/databases-class41.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergeyzoloto/databases-class41/issues"
+  },
+  "homepage": "https://github.com/sergeyzoloto/databases-class41#readme"
+}
