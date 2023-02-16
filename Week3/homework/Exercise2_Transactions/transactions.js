@@ -2,18 +2,18 @@ import { db as connection, execBoundQuery } from '../../../db.js';
 import { insertValues } from './transactions-insert-values.js';
 import { createTables } from './transactions-create-tables.js';
 
-async function transfer(source_id, target_id, amount) {
+async function transfer(sourceId, targetId, amount) {
   try {
     // check source account money sufficiency
     const sourceRow = await execBoundQuery(
       `SELECT balance FROM account WHERE account_number = ?`,
-      [source_id],
+      [sourceId],
     );
     const sourceAmount = await JSON.parse(JSON.stringify(sourceRow))[0].balance;
     if (sourceAmount >= amount) {
       const targetRow = await execBoundQuery(
         `SELECT balance FROM account WHERE account_number = ?`,
-        [target_id],
+        [targetId],
       );
       const targetAmount = await JSON.parse(JSON.stringify(targetRow))[0]
         .balance;
@@ -22,21 +22,21 @@ async function transfer(source_id, target_id, amount) {
       // update source account amount
       await execBoundQuery(
         'UPDATE account SET balance = ? WHERE account_number = ?',
-        [sourceAmount - amount, source_id],
+        [sourceAmount - amount, sourceId],
       );
       // update target account amount
       await execBoundQuery(
         'UPDATE account SET balance = ? WHERE account_number = ?',
-        [targetAmount + amount, target_id],
+        [targetAmount + amount, targetId],
       );
       // insert details into account_changes table
       await execBoundQuery(
         'INSERT INTO account_changes (account_number, amount, changed_date, remark) VALUES (?)',
-        [[source_id, -amount, today, `${amount} sent to ID ${target_id}`]],
+        [[sourceId, -amount, today, `${amount} sent to ID ${targetId}`]],
       );
       await execBoundQuery(
         'INSERT INTO account_changes (account_number, amount, changed_date, remark) VALUES (?)',
-        [[target_id, amount, today, `${amount} received from ID ${source_id}`]],
+        [[targetId, amount, today, `${amount} received from ID ${sourceId}`]],
       );
       // commit transaction
       await execBoundQuery('COMMIT');
