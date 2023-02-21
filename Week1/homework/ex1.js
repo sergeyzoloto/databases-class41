@@ -33,15 +33,15 @@ CREATE TABLE IF NOT EXISTS Invitee (
 CREATE TABLE if not exists Room (
   room_no INT PRIMARY KEY AUTO_INCREMENT, 
   room_name VARCHAR(100), 
-  floor_number INT NOT NULL
+  floor_number TINYINT NOT NULL
 );
   `,
   `
 CREATE TABLE if not exists Meeting (
   meeting_no INT PRIMARY KEY AUTO_INCREMENT,
-  meeting_title TEXT,
-  starting_time TIMESTAMP NOT NULL,
-  ending_time TIMESTAMP NOT NULL,
+  meeting_title VARCHAR(300),
+  starting_time DATETIME NOT NULL,
+  ending_time DATETIME NOT NULL,
   room_no int NOT NULL,
   FOREIGN KEY (room_no) REFERENCES Room(room_no) 
 );
