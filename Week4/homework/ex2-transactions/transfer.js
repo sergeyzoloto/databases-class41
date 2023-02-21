@@ -70,5 +70,7 @@ export const transfer = async (client, sourceId, targetId, amount) => {
     }
   } catch (error) {
     console.log(`Unexpected error: ${error}`);
+  } finally {
+    await session.endSession();
   }
 };
