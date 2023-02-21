@@ -26,22 +26,8 @@ async function execInsert(params) {
     console.log(error);
   }
 }
-async function execQueries(params) {
-  try {
-    const promises = params.data.map((element) =>
-      execQuery({
-        query: element,
-        connection,
-        full_query: false,
-      }),
-    );
-    await Promise.all(promises);
-  } catch (error) {
-    console.log(error);
-  }
-}
 
-async function createTables() {
+function createTables() {
   const queries = [
     `
 DROP TABLE IF EXISTS authors_papers;
@@ -71,16 +57,12 @@ CREATE TABLE IF NOT EXISTS authors_papers
 );
 `,
     `
-DELETE FROM research_papers;
-`,
-    `
-DELETE FROM authors_papers;
-`,
-    `
 DELETE FROM authors;
 `,
   ];
-  await execQueries({ data: queries });
+  queries.forEach((query) =>
+    execQuery({ query, connection, full_query: true }),
+  );
 }
 async function insertPapers() {
   const papers = loadJSON('/data/papers.json');
