@@ -16,7 +16,7 @@ const logErrorMessage = (error, query, full_query) => {
   let message = `ERROR. Query `;
   if (full_query) message = message + indentString(`\n${query}`, 2) + `\n`;
   message += `execution failed, returned message: `;
-  message += `${error.sqlMessage}`;
+  message += `${error}`;
   // Log the error message
   console.log(`${message}`);
   if (full_query) console.log(`\n`);
