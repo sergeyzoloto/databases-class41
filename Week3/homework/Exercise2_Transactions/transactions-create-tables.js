@@ -33,20 +33,7 @@ CREATE TABLE IF NOT EXISTS account_changes
 ALTER TABLE account AUTO_INCREMENT = 100;
 `,
   ];
-
-  async function createDB(queries) {
-    try {
-      const promises = queries.map((element) =>
-        execQuery({
-          query: element,
-          connection,
-          full_query: true,
-        }),
-      );
-      await Promise.all(promises);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  createDB(createQueries);
+  createQueries.forEach((query) =>
+    execQuery({ query, connection, full_query: false }),
+  );
 }

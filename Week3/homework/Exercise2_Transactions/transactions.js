@@ -50,8 +50,17 @@ async function transfer(sourceId, targetId, amount) {
   }
 }
 
-connection.changeUser({ database: 'transactions' });
-createTables();
-insertValues();
-await transfer(101, 102, 1000);
-connection.end();
+async function main() {
+  try {
+    connection.changeUser({ database: 'transactions' });
+    createTables();
+    insertValues();
+    await transfer(101, 102, 1000);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    connection.end();
+  }
+}
+
+main();

@@ -12,20 +12,4 @@ const db = mysql.createConnection({
 const execQuery = util.promisify(executeQuery);
 const execBoundQuery = util.promisify(db.query.bind(db));
 
-async function execAsyncQueries(params) {
-  try {
-    const promises = params.data.map((element) =>
-      execQuery({
-        query: params.query,
-        set: [element],
-        connection: params.connection,
-        full_query: params.full_query,
-      }),
-    );
-    await Promise.all(promises);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export { db, execQuery, execBoundQuery, execAsyncQueries };
+export { db, execQuery, execBoundQuery };

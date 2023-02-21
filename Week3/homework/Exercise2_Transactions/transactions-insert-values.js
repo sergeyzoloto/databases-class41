@@ -1,12 +1,13 @@
-import { db as connection, execAsyncQueries } from '../../../db.js';
+import { db as connection, execQuery } from '../../../db.js';
 
 export function insertValues() {
-  const balances = [100000, 100000, 100000];
+  const queries = [
+    `INSERT INTO account(balance) VALUES (10000)`,
+    `INSERT INTO account(balance) VALUES (10000)`,
+    `INSERT INTO account(balance) VALUES (10000)`,
+  ];
 
-  execAsyncQueries({
-    query: `INSERT INTO account(balance) VALUES (?)`,
-    data: balances,
-    connection,
-    full_query: true,
+  queries.forEach((query) => {
+    execQuery({ query, connection, full_query: false });
   });
 }

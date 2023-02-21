@@ -31,7 +31,7 @@ const logErrorMessage = (error, query, full_query, set = null) => {
       ) +
       `\n`;
   message += `execution failed, returned message: `;
-  message += `${error.sqlMessage}`;
+  message += `${error}`;
   // Log the error message
   console.log(`${message}`);
   if (full_query) console.log(`\n`);
