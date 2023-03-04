@@ -11,9 +11,9 @@ At this point there are members, dinners, venues, and food.
 3. Name all the tables and columns that would make a 3NF compliant solution.
 
 members_dict (member_id PK, member_name, member_address)
-venues_dict (venue_id PK, venue_description)
-food_dict (food_id PK, food_description)
+venues_dict (venue_code PK, venue_description)
+food_dict (food_code PK, food_description)
 
 dinners (dinner_id PK, dinner_date, venue_code FK)
-orders (order_id PK, member_code FK, dinner_code FK)
+orders (order_id PK, member_id FK, dinner_id FK)
 meals (meal_id PK, order_code FK, food_code FK)

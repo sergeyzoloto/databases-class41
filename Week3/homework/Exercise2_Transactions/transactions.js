@@ -40,6 +40,9 @@ async function transfer(sourceId, targetId, amount) {
       );
       // commit transaction
       await execBoundQuery('COMMIT');
+      console.log(
+        `Transaction committed. ${amount} transferred from ${sourceId} to ${targetId}`,
+      );
     } else {
       console.log('Insufficient sum on the source account!');
     }
